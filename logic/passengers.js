@@ -1,6 +1,12 @@
 function Passengers() {
 	function onCheckFlightCapacity(flightCapacity, passengersArray){
-		totalPassengers = passengersArray.reduce(function(acc, val) { return acc + val; }, 0);
+		// totalPassengers = passengersArray.reduce(function(acc, val) { return acc + val; }, 0);
+
+		let totalFlightCapacity = 0;
+		let chair;
+		for(chair in flightCapacity) {
+			totalFlightCapacity += flightCapacity[chair];
+
 		if (totalPassengers > flightCapacity) {
 			throw new Error("Total passengers exceeds the flight capacity.  Someone gonna die.")
 		} else {
