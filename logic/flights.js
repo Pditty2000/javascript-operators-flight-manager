@@ -1,5 +1,5 @@
 function Flights() {
-	function calculateNumberOfFlights(passengers, capacity){
+	function calculateNumberOfFlights(passengers, capacity) {
 		let flights = 0;
 
 		if(passengers < 0 || (!Number.isInteger(Number(passengers)))) {
@@ -20,7 +20,13 @@ function Flights() {
 	return flights;
 
 	function checkAircraftRevision(distanceLimit, distancesArray) {
-		let totalDistance = distancesArray.reduce(function(acc, val) { return acc + val; }, 0)
+		// let totalDistance = distancesArray.reduce(function(acc, val) { return acc + val; }, 0)
+
+		let totalDistance = 0;
+		let mile;
+		for(mile in distanceLimit) {
+			totalDistance += distancesArray[mile];
+
 		if(totalDistance <= distanceLimit/2){
 			console.log("The revision needs to be done within the next 3 months");
 		} else if(totalDistance > distanceLimit/2 && totalDistance <=  (distanceLimit/4)*3){
