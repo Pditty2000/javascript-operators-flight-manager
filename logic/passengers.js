@@ -1,26 +1,30 @@
 function Passengers() {
-	function onCheckFlightCapacity(flightCapacity, passengersArray){
-		// totalPassengers = passengersArray.reduce(function(acc, val) { return acc + val; }, 0);
+	function CheckFlightCapacity(flightCapacity, passengersArray){
 
-		let totalFlightCapacity = 0;
-		let chair;
-		for(chair in flightCapacity) {
-			totalFlightCapacity += flightCapacity[chair];
+		let passengersNumber = 0;
+		let passengers;
+		for(passengers in passengersArray) {
+			if (Number.isNaN(passengers)) {
+				passengersNumber += 0;
+			} else {
+				passengersNumber += passengers;
+			}
+		}
 
-		if (totalPassengers > flightCapacity) {
+		if (passengersNumber > flightCapacity) {
 			throw new Error("Total passengers exceeds the flight capacity.  Someone gonna die.")
 		} else {
-			return totalPassengers;
+			return passengersNumber;
 		}
 	}
 
-	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, flights, businessSeatsPerFlight, economySeatsPerFlight) {
+	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, noOfflights, businessSeatsPerFlight, economySeatsPerFlight) {
 		let vipInBusiness = 0;
 		let vipInEconomy = 0;
 		let regularInBusiness = 0;
 		let regularInEconomy = 0;
-		let businessSeatsRemaining = flights * businessSeatsPerFlight;
-		let economySeatsRemaining = flights * economySeatsPerFlight;
+		let businessSeatsRemaining = noOfflights * businessSeatsPerFlight;
+		let economySeatsRemaining = noOfflights * economySeatsPerFlight;
 
 		var vipBusinessConfiguration = {passengers:vipPassengers, seats:businessSeatsRemaining};
 		vipInBusiness = updateConfiguration(vipBusinessConfiguration, businessSeatsPerFlight);
@@ -33,15 +37,18 @@ function Passengers() {
 
 		var regularEconomyConfiguration = {passengers:regularBusinessConfiguration.passengers, seats: vipEconomyConfiguration.seats};
 		regularInEconomy = updateConfiguration(regularEconomyConfiguration, economySeatsPerFlight);
+
+		return {vipInBusiness:vipInBusiness, vipInEconomy: vipInEconomy, regularInBusiness: regularInBusiness, regularInEconomy:regularInEconomy};
 	}
 
 	function updateConfiguration(configuraion, seatsPerFlight) {
 		let pssengersWithSeats = 0;
 		while (configuration.passengers > 0) {
 			if (configuration.seats > 0) {
-				if (configuration.passengers >= configuration.seats) {
+				if (configuration.passengers > configuration.seats) {
 					if (configuration.seats > configuration.seatsPerFlight) {
 						configuration.passengers -= seatsPerFlight;
+						configuration.seats -= seatsPerFlight;
 						passengersWithSeats += seatsPerFlight;
 					} else {
 						configuration.passengers -= configuration.seats;
@@ -60,8 +67,6 @@ function Passengers() {
 		return passengersWithSeats;
 	}
 	return {checkFlightCapacity, distributeAllSeatsToAllPassengers};
-}
-				
-
+}		
 module.exports = Passengers();
 
