@@ -1,43 +1,50 @@
 function Flights() {
 	function calculateNumberOfFlights(passengers, capacity) {
-		let flights = 0;
+		let flights;
 
-		if(passengers < 0 || (!Number.isInteger(Number(passengers)))) {
+		if((passengers < 0) || (!Number.isInteger(Number(passengers)))) {
 			throw new Error("The number of passengers must be a positive integer value");
 		}
 
-		if(capacity < 0 || (!Number.isInteger(Number(capacity)))) {
+		if((capacity < 0) || (!Number.isInteger(Number(capacity)))) {
 			throw new Error("The capacity of the flight must be a positive integer value");
 		}
 
 
-		if (passengers%capacity == 0){
+		if (passengers%capacity == 0) {
 			flights = passengers/capacity;
 		} else {
 			flights = Math.floor(passengers/capacity) + 1;
 		}
-	}
+	
 	return flights;
+}
 
 	function checkAircraftRevision(distanceLimit, distancesArray) {
-		// let totalDistance = distancesArray.reduce(function(acc, val) { return acc + val; }, 0)
+		// totalDistance = distancesArray.reduce(function(acc, val) { return acc + val; }, 0);
 
 		let totalDistance = 0;
-		let mile;
-		for(mile in distanceLimit) {
-			totalDistance += distancesArray[mile];
-
-		if(totalDistance <= distanceLimit/2){
-			console.log("The revision needs to be done within the next 3 months");
-		} else if(totalDistance > distanceLimit/2 && totalDistance <=  (distanceLimit/4)*3){
-			console.log("The revision needs to be done within the next 2 months")
-		} else if(totalDistance > (distanceLimit/4)*3 && totalDistance <= distanceLimit){
-			console.log("The revision needs to be done within the next month")
-		} else {
-			throw new Error("Total distance exceeds the distance limit.  This is a flying deathtrap.")
+		let distance;
+		for(distance of distancesArray) {
+			if (Number.isNaN(distance)) {
+				totalDistance += 0;
+			} else {
+				totalDistance += distance;
+			}
 		}
-	}
 
+		if (totalDistance > distanceLimit) {
+			throw new Error("Total distance: " + totalDistance + " exceeds the distance limit: " + distanceLimit + ".  This is a flying deathtrap.")
+		}
+
+		if(totalDistance <= (distanceLimit/2)) {
+			return "The revision needs to be done within the next 3 months" + distancesArray;
+		} else if(totalDistance <=  (distanceLimit/4)*3){
+			return "The revision needs to be done within the next 2 months" + distancesArray;
+		} else {
+			return "The revision needs to be done within the next month" + distancesArray;
+		} 
+	}
 	return {calculateNumberOfFlights, checkAircraftRevision}; 
 }
 
