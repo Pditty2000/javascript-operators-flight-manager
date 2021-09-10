@@ -1,9 +1,10 @@
 function Passengers() {
-	function CheckFlightCapacity(flightCapacity, passengersArray){
+	
+	function checkFlightCapacity(flightCapacity, passengersArray) {
 
 		let passengersNumber = 0;
 		let passengers;
-		for(passengers in passengersArray) {
+		for (passengers of passengersArray) {
 			if (Number.isNaN(passengers)) {
 				passengersNumber += 0;
 			} else {
@@ -12,19 +13,17 @@ function Passengers() {
 		}
 
 		if (passengersNumber > flightCapacity) {
-			throw new Error("Total passengers exceeds the flight capacity.  Someone gonna die.")
-		} else {
-			return passengersNumber;
-		}
+			throw new Error("Flight capacity (" + flightCapacity + ") exceeded. You have " + passengersNumber + " passengers. ")
+		} 
+		return passengersNumber;
 	}
 
-	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, noOfflights, businessSeatsPerFlight, economySeatsPerFlight) {
-		let vipInBusiness = 0;
-		let vipInEconomy = 0;
-		let regularInBusiness = 0;
-		let regularInEconomy = 0;
-		let businessSeatsRemaining = noOfflights * businessSeatsPerFlight;
-		let economySeatsRemaining = noOfflights * economySeatsPerFlight;
+	
+
+	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, noOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
+		let vipInBusiness = 0, vipInEconomy = 0, regularInBusiness = 0, regularInEconomy = 0;
+		let businessSeatsRemaining = noOfFlights * businessSeatsPerFlight;
+		let economySeatsRemaining = noOfFlights * economySeatsPerFlight;
 
 		var vipBusinessConfiguration = {passengers:vipPassengers, seats:businessSeatsRemaining};
 		vipInBusiness = updateConfiguration(vipBusinessConfiguration, businessSeatsPerFlight);
@@ -45,7 +44,8 @@ function Passengers() {
 		let pssengersWithSeats = 0;
 		while (configuration.passengers > 0) {
 			if (configuration.seats > 0) {
-				if (configuration.passengers > configuration.seats) {
+				if (configuration.passengers >= configuration.seats) {
+
 					if (configuration.seats > configuration.seatsPerFlight) {
 						configuration.passengers -= seatsPerFlight;
 						configuration.seats -= seatsPerFlight;
@@ -66,7 +66,9 @@ function Passengers() {
 		}
 		return passengersWithSeats;
 	}
+
 	return {checkFlightCapacity, distributeAllSeatsToAllPassengers};
-}		
+}
+
 module.exports = Passengers();
 
