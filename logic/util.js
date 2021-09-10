@@ -2,14 +2,14 @@ function Util() {
 	function calculateTotalDistributedPassengers(distributedPassengers) {
 		// return distributedPassengers.reduce(function(acc, val) { return acc + val; }, 0)
 		let totalDistributedPassengers = 0;
-		let values;
+		let value;
 		for(value in distributedPassengers) {
 			totalDistributedPassengers += distributedPassengers[value];
 		}
 		return distributedPassengers;
 	}
 
-	function calculateTotalNumberOfPassengers(ppassengersArray) {
+	function calculateTotalNumberOfPassengers(passengersArray) {
 		let totalNumberOfpassengers = 0;
 		let passengers;
 		for (passengers in ppassengersArray) {
