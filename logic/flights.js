@@ -35,7 +35,7 @@ function Flights() {
 		let percent = Math.floor((totalDistance/distanceLimit)*100);
 
 		if (totalDistance >= distanceLimit) {
-			throw new Error("Total distance: " + totalDistance + " exceeds the distance limit: " + distanceLimit + ".")
+			throw new Error("Flight maximum allowed distance (" + distanceLimit + ") exceeded. No flight is allowed any longer, you need to make the revision immediately.")
 		}
 
 		if(totalDistance <= (distanceLimit/2)) {
