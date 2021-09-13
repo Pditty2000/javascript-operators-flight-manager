@@ -6,14 +6,18 @@ function Util() {
 		for(value in distributedPassengers) {
 			totalDistributedPassengers += distributedPassengers[value];
 		}
-		return distributedPassengers;
+		return totalDistributedPassengers;
 	}
 
 	function calculateTotalNumberOfPassengers(passengersArray) {
-		let totalNumberOfpassengers = 0;
+		let totalNumberOfPassengers = 0;
 		let passengers;
-		for (passengers in ppassengersArray) {
-			totalNumberOfPassengers += passengers;
+		for (passengers of passengersArray) {
+			if (Number.isNaN(passengers)) {
+				totalNumberOfPassengers += 0;
+			} else {
+				totalNumberOfPassengers += passengers;
+			}
 		}
 		return totalNumberOfPassengers;
 	}
