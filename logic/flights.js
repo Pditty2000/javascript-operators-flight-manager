@@ -34,7 +34,7 @@ function Flights() {
 		}
 		let percent = Math.floor((totalDistance/distanceLimit)*100);
 
-		if (totalDistance > distanceLimit) {
+		if (totalDistance >= distanceLimit) {
 			throw new Error("Total distance: " + totalDistance + " exceeds the distance limit: " + distanceLimit + ".  This is a flying deathtrap.")
 		}
 
