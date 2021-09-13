@@ -32,17 +32,18 @@ function Flights() {
 				totalDistance += distance;
 			}
 		}
+		let percent = Math.floor((totalDistance/distanceLimit)*100);
 
 		if (totalDistance > distanceLimit) {
 			throw new Error("Total distance: " + totalDistance + " exceeds the distance limit: " + distanceLimit + ".  This is a flying deathtrap.")
 		}
 
 		if(totalDistance <= (distanceLimit/2)) {
-			return "The revision needs to be done within the next 3 months";
+			return "The revision needs to be done within the next 3 months.  This aircraft has flown " + percent + "% of it's limit.";
 		} else if(totalDistance <=  (distanceLimit/4)*3){
-			return "The revision needs to be done within the next 2 months";
+			return "The revision needs to be done within the next 2 months.  This aircraft has flown " + percent + "% of it's limit.";
 		} else {
-			return "The revision needs to be done within the next month";
+			return "The revision needs to be done within the next month.  This aircraft has flown " + percent + "% of it's limit.";
 		} 
 	}
 	return {calculateNumberOfFlights, checkAircraftRevision}; 
