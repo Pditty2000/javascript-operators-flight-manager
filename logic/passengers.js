@@ -40,7 +40,7 @@ function Passengers() {
 		return {vipInBusiness:vipInBusiness, vipInEconomy: vipInEconomy, regularInBusiness: regularInBusiness, regularInEconomy:regularInEconomy};
 	}
 
-	function updateConfiguration(configuraion, seatsPerFlight) {
+	function updateConfiguration(configuration, seatsPerFlight) {
 		let passengersWithSeats = 0;
 		while (configuration.passengers > 0) {
 			if (configuration.seats > 0) {
