@@ -11,27 +11,25 @@ function Passengers() {
 				passengersNumber += passengers;
 			}
 		}
-
 		if (passengersNumber > flightCapacity) {
 			throw new Error("Flight capacity (" + flightCapacity + ") exceeded. You have " + passengersNumber + " passengers. ")
 		} 
 		return passengersNumber;
 	}
 
-
-	// return {checkFlightCapacity};
-
-	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, nrOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
+	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, nrOfFlights, 
+		businessSeatsPerFlight, economySeatsPerFlight) {
+		
 		let vipPassengersWithBusinessSeats = 0, vipPassengersWithEconomySeats = 0, 
 		regularPassengersWithBusinessSeats = 0, regularPassengersWithEconomySeats = 0;
-		let businessSeatsRemaining = nrOfFlights * businessSeatsPerFlight;
-		let economySeatsRemaining = nrOfFlights * economySeatsPerFlight;
+		let availableBusinessSeats = nrOfFlights * businessSeatsPerFlight;
+		let availableEconomySeats = nrOfFlights * economySeatsPerFlight;
 
-		var vipBusinessConfiguration = {passengers:vipPassengers, seats:businessSeatsRemaining};
+		var vipBusinessConfiguration = {passengers:vipPassengers, seats:availableBusinessSeats};
 		vipPassengersWithBusinessSeats = updateConfiguration(vipBusinessConfiguration, businessSeatsPerFlight);
 
-		var vipEconomyConfiguration = {passengers:vipBusinessConfiguration.passengers, seats:economySeatsRemaining};
-		vipInEconomy = updateConfiguration(vipEconomyConfiguration, economySeatsPerFlight);
+		var vipEconomyConfiguration = {passengers:vipBusinessConfiguration.passengers, seats:availableEconomySeats};
+		vipPassengersWithEconomySeats = updateConfiguration(vipEconomyConfiguration, economySeatsPerFlight);
 
 		var regularBusinessConfiguration = {passengers:regularPassengers, seats: vipBusinessConfiguration.seats};
 		regularPassengersWithBusinessSeats = updateConfiguration(regularBusinessConfiguration, businessSeatsPerFlight);
@@ -39,7 +37,7 @@ function Passengers() {
 		var regularEconomyConfiguration = {passengers:regularBusinessConfiguration.passengers, seats: vipEconomyConfiguration.seats};
 		regularPassengersWithEconomySeats = updateConfiguration(regularEconomyConfiguration, economySeatsPerFlight);
 
-		return {vipPassengersWithBusinessSeats:vipPassengersWithBusinessSeats, vipPassengersWithEconomySeats: vipPassengersWithEconomySeats, regularInBusiness: regularInBusiness, regularInEconomy:regularInEconomy};
+		return {vipPassengersWithBusinessSeats:vipPassengersWithBusinessSeats, vipPassengersWithEconomySeats: vipPassengersWithEconomySeats, regularPassengersWithBusinessSeats: regularPassengersWithBusinessSeats, regularPassengersWithEconomySeats:regularPassengersWithEconomySeats};
 	}
 
 	function updateConfiguration(configuration, seatsPerFlight) {	
