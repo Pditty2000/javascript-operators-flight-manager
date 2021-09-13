@@ -18,7 +18,7 @@ function Passengers() {
 		return passengersNumber;
 	}
 
-	
+
 
 	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, noOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
 		let vipInBusiness = 0, vipInEconomy = 0, regularInBusiness = 0, regularInEconomy = 0;
@@ -41,7 +41,7 @@ function Passengers() {
 	}
 
 	function updateConfiguration(configuraion, seatsPerFlight) {
-		let pssengersWithSeats = 0;
+		let passengersWithSeats = 0;
 		while (configuration.passengers > 0) {
 			if (configuration.seats > 0) {
 				if (configuration.passengers >= configuration.seats) {
