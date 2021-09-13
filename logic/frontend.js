@@ -83,10 +83,10 @@ function onDistributePassengers() {
 
     document.getElementById("distributedPassengers").innerHTML = 
          "Total number of distributed passengers: " + totalDistributedPassengers + "<br>" +
-         "VIP passengers distributed to business seats: " + distributedPassengers.vipPassengersWithBusinessSeats + "<br>" + 
-         "VIP passengers distributed to economy seats: " + distributedPassengers.vipPassengersWithEconomySeats + "<br>" +
-         "Regular passengers distributed to business seats: " + distributedPassengers.regularPassengersWithBusinessSeats + "<br>" +
-         "Regular passengers distributed to economy seats: " + distributedPassengers.regularPassengersWithEconomySeats + "<br>";
+         "VIP passengers distributed to business seats: " + distributedPassengers.vipInBusiness + "<br>" + 
+         "VIP passengers distributed to economy seats: " + distributedPassengers.vipInEconomy + "<br>" +
+         "Regular passengers distributed to business seats: " + distributedPassengers.regularInBusiness + "<br>" +
+         "Regular passengers distributed to economy seats: " + distributedPassengers.regularInEconomy + "<br>";
 
 }
 
