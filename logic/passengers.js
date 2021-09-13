@@ -19,11 +19,12 @@ function Passengers() {
 	}
 
 
+	// return {checkFlightCapacity};
 
-	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, noOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
+	function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, nrOfFlights, businessSeatsPerFlight, economySeatsPerFlight) {
 		let vipInBusiness = 0, vipInEconomy = 0, regularInBusiness = 0, regularInEconomy = 0;
-		let businessSeatsRemaining = noOfFlights * businessSeatsPerFlight;
-		let economySeatsRemaining = noOfFlights * economySeatsPerFlight;
+		let businessSeatsRemaining = nrOfFlights * businessSeatsPerFlight;
+		let economySeatsRemaining = nrOfFlights * economySeatsPerFlight;
 
 		var vipBusinessConfiguration = {passengers:vipPassengers, seats:businessSeatsRemaining};
 		vipInBusiness = updateConfiguration(vipBusinessConfiguration, businessSeatsPerFlight);
@@ -39,7 +40,7 @@ function Passengers() {
 
 		return {vipInBusiness:vipInBusiness, vipInEconomy: vipInEconomy, regularInBusiness: regularInBusiness, regularInEconomy:regularInEconomy};
 	}
-	rturn {checkFlightCapacity};
+
 	function updateConfiguration(configuration, seatsPerFlight) {
 		let passengersWithSeats = 0;
 		while (configuration.passengers > 0) {
