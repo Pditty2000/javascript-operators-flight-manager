@@ -43,7 +43,7 @@ function Util() {
 	function calculateBonusPoints(businessDistancesArray, economyDistancesArray, businessBonusPercent, economyBonusPercent) {
 		let businessDistance = calculateTotalDistance(businessDistancesArray);
 		let economyDistance = calculateTotalDistance(economyDistancesArray);
-		let points = (businessPoints * businessBonusPercent)/100 + (economyDistance * economyBonusPercent)/100;
+		let points = (businessDistance * businessBonusPercent)/100 + (economyDistance * economyBonusPercent)/100;
 		return points;
 	}
 
