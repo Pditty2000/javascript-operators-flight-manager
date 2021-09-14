@@ -5,6 +5,7 @@ function Prices() {
 		let finalPrice = basePrice;
 		finalPrice *= 1 + variationPassengerType/100;
 		finalPrice *= 1 + variationFlightType/100;
+		return finalPrice.toFixed(2);
 	}
 
 	function calculateDefaultFinalPrice(basePrice, passengerType, flightType) {
