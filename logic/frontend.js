@@ -99,8 +99,10 @@ function onCalculatePassengers() {
 
     let passengersArray = [passengers1, passengers2, passengers3, passengers4, passengers5];
     calculatedPassengers = Util().calculateTotalNumberOfPassengers(passengersArray);
+    // calculatedPassengers = 9;
 
-    document.getElementById("calculatedPassengers").innerHTML = "Total number of passengers: " + calculatedPassengers;
+    // document.getElementById("calculatedPassengers").innerHTML = "Total number of passengers: " + calculatedPassengers;
+    document.getElementById("distributedPassengers").innerHTML = "Total number of passengers: " + 123;
 
 }
 
@@ -112,8 +114,7 @@ function onCalculateTotalDistance() {
     let distance5 = parseInt(document.getElementById("distance5").value);
 
     let distancesArray = [distance1, distance2, distance3, distance4, distance5];
-    // calculatedTotalDistance = Util().calculateTotalDistance(distancesArray);
-    calculatedTotalDistance = 110011;
+    calculatedTotalDistance = Util().calculateTotalDistance(distancesArray);
 
     document.getElementById("calculatedTotalDistance").innerHTML = "Total distance: " + calculatedTotalDistance;
 
