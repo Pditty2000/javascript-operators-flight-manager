@@ -31,7 +31,7 @@ function Util() {
 	function calculateTotalDistance(distancesArray) {
 		let totalDistance = 0;
   		let distance;
-		for (distance of distanceArray) {
+		for (distance of distancesArray) {
 			if (distance < 0) {
 				continue;
 			} 
