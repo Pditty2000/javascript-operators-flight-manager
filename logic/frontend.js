@@ -112,7 +112,8 @@ function onCalculateTotalDistance() {
     let distance5 = parseInt(document.getElementById("distance5").value);
 
     let distancesArray = [distance1, distance2, distance3, distance4, distance5];
-    calculatedTotalDistance = Util().calculateTotalDistance(distancesArray);
+    // calculatedTotalDistance = Util().calculateTotalDistance(distancesArray);
+    calculatedTotalDistance = 110011;
 
     document.getElementById("calculatedTotalDistance").innerHTML = "Total distance: " + calculatedTotalDistance;
 
