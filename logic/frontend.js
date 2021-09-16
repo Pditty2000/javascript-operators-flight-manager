@@ -102,7 +102,7 @@ function onCalculatePassengers() {
     // calculatedPassengers = 9;
 
     // document.getElementById("calculatedPassengers").innerHTML = "Total number of passengers: " + calculatedPassengers;
-    document.getElementById("distributedPassengers").innerHTML = "Total number of passengers: " + 123;
+    document.getElementById("calculatedPassengers").innerHTML = "Total number of passengers: " + 123;
 
 }
 
